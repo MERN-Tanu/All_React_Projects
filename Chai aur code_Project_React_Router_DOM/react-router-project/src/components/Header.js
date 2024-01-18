@@ -1,28 +1,93 @@
-import { IMG_URL } from "../utils/constants";
+// import { IMG_URL } from "../utils/constants";
+import React from "react";
+import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-function Header() {
+export default function Header() {
   return (
-    <div>
-      <ul className="flex justify-evenly bg-slate-950 text-white">
-        <img src={IMG_URL} alt="logoImg" className="w-10 h-10 -ml-60" />
-        <li className="mt-2 pl-9">Home</li>
-        <li className="mt-2 pr-39">About</li>
-        <li className="mt-2 ml-36">Cart</li>
-      </ul>
-      <div></div>
+    <header className="shadow sticky z-50 top-0">
+      <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
+        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+          <Link to="/" className="flex items-center">
+            <img
+              src="http://pluspng.com/img-png/logo-template-png-logo-templates-1655.png"
+              className="mr-3 h-12"
+              alt="Logo"
+            />
+          </Link>
+          <div className="flex items-center lg:order-2">
+            <Link
+              to="#"
+              className="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none">
+              Log in
+            </Link>
+            <Link
+              to="#"
+              className="text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none">
+              Get started
+            </Link>
+          </div>
+          <div
+            className="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1"
+            id="mobile-menu-2">
+            <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+              <li>
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    `block py-2 pr-4 pl-3 duration-200 ${
+                      isActive ? "text-orange-700" : "text-gray-700"
+                    } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
+                  }>
+                  Home
+                </NavLink>
+              </li>
 
-      <div className="mt-4 ml-96 mr-80">
-        <p>
-          The beginning of a meeting sets the tone and introduces the major
-          themes for the entire session. On one hand, if a meeting host makes it
-          clear at the beginning that they're unprepared, attendees may take it
-          as a clear sign that the meeting won't be valuable. An organized host,
-          on the other hand, shows employees that their attendance and efforts
-          are valued and that the session will run smoothly.
-        </p>
-      </div>
-    </div>
+              <li>
+                <NavLink
+                  to="/about"
+                  className={({ isActive }) =>
+                    `
+                    
+                    block py-2 pr-4 pl-3 duration-200 ${
+                      isActive ? "text-orange-700" : "text-gray-700"
+                    } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
+                  }>
+                  About
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to="/contact"
+                  className={({ isActive }) =>
+                    `
+                    
+                    block py-2 pr-4 pl-3 duration-200 ${
+                      isActive ? "text-orange-700" : "text-gray-700"
+                    } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
+                  }>
+                  Contact
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink
+                  to="/github"
+                  className={({ isActive }) =>
+                    `
+                    
+                    block py-2 pr-4 pl-3 duration-200 ${
+                      isActive ? "text-orange-700" : "text-gray-700"
+                    } border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
+                  }>
+                  Github
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
   );
 }
-
-export default Header;
