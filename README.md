@@ -7,3 +7,7 @@
 ```
 ThemeSwitcher-Toggle : https://tanu-toggleprofile-lightandark.netlify.app/
 ```
+
+```
+Currency-Converter : https://currancy-converter-from-usd-to-inr.netlify.app/
+```
