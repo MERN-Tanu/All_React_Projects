@@ -64,3 +64,25 @@ generates a set of reusable reducers and selectors to manage normalized data in 
 The createSelector utility from the Reselect library, re-exported for ease of use.
 
 ```
+
+```
+Redux toolkit ki notes :
+
+1. Create Store - single source of truth
+it has configureStore
+introduce reducer
+
+2. Create Slice(functions) method(createSlice)
+Slice has name, initialState, reducers :{key: function}
+Access of two things (State, action)
+state = state value in the store
+action = action.payload
+export individual functionality
+export main source export
+
+3. Add Todo - Give values to State i.e Dispatch Courier  = use method useDispatch()
+ dispatch(addTodo())
+
+4. Take Values - useSelector((state) =>state.todos) state ka access chaiye
+variable me values lelo ek baar aagaie uske baad pure JS concept hai
+```
