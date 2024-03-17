@@ -3,6 +3,8 @@ import "./App.css";
 import { TbBrightnessUp } from "react-icons/tb";
 import { BsBrightnessHighFill } from "react-icons/bs";
 import WhetherTask from "./components/WhetherTask";
+// import SpinnerReact from "./components/SpinnerReact";
+import Shimmer from "./components/Shimmer";
 import SpinnerReact from "./components/SpinnerReact";
 
 function App() {
@@ -52,7 +54,9 @@ function App() {
               </button>
             </div>
           </div>
-          <div>{loading ? <SpinnerReact /> : <WhetherTask />}</div>
+          <div>
+            <WhetherTask />
+          </div>
         </div>
       </div>
     </div>

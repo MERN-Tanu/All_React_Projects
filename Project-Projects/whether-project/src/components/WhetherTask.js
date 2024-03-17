@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import "../components/Weather.css";
+// import SpinnerReact from "./SpinnerReact";
+import Shimmer from "./Shimmer";
 
 function WhetherTask() {
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const fetchData = async () => {
     try {
+      setLoading(true);
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=d1845658f92b31c64bd94f06f7188c9c&units=metric`
       );
@@ -19,8 +23,10 @@ function WhetherTask() {
       const json = await response.json();
       console.log(json);
       setWeatherData(json);
+      setLoading(false);
     } catch (error) {
       console.error("Error Fetching weather data:", error.message);
+      setLoading(false);
     }
   };
 
@@ -28,7 +34,7 @@ function WhetherTask() {
     fetchData();
   }
   return (
-    <div className="border-black">
+    <div className="border-black flex justify-center">
       <div>
         <label>Enter City :</label>
 
@@ -46,17 +52,23 @@ function WhetherTask() {
           <IoSearchOutline fontSize={25} />
         </button>
       </div>
-      {weatherData && (
-        <div>
-          <h1>
-            Weather Information for {weatherData.name},{weatherData.sys.country}
-          </h1>
-          <h2>Temperature_feels_like : {weatherData?.main?.feels_like}</h2>
-          <h2>Pressure : {weatherData?.main?.pressure}</h2>
-          <h2>Humidity : {weatherData?.main?.humidity}</h2>
-          <h2>Wind : {weatherData?.wind?.speed}</h2>
-          <h2>Temperature : {weatherData?.main?.temp}</h2>
-        </div>
+      {/* or we can add Spinner */}
+      {loading ? (
+        <Shimmer />
+      ) : (
+        weatherData && (
+          <div>
+            <h1>
+              Weather Information for {weatherData.name},
+              {weatherData.sys.country}
+            </h1>
+            <h2>Temperature_feels_like : {weatherData?.main?.feels_like}</h2>
+            <h2>Pressure : {weatherData?.main?.pressure}</h2>
+            <h2>Humidity : {weatherData?.main?.humidity}</h2>
+            <h2>Wind : {weatherData?.wind?.speed}</h2>
+            <h2>Temperature : {weatherData?.main?.temp}</h2>
+          </div>
+        )
       )}
     </div>
   );
